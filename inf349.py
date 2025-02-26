@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from peewee import Model, SqliteDatabase, IntegerField, TextField, BooleanField, FloatField
 import requests
 
@@ -53,10 +53,10 @@ def fetch_and_store_products():
         print("Échec de la récupération des produits.")
 
 # Route pour récupérer les produits stockés en base de données
-@app.route('/products', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_products():
     products = list(Product.select().dicts())
-    return jsonify({"products": products})
+    return jsonify({"products": products}), 200
 
 if __name__ == '__main__':
     init_db()
