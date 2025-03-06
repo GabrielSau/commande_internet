@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Connexion à la base de données SQLite
-db = SqliteDatabase('products.db')
+db = SqliteDatabase('shop.db')
 
 # Modèle de la base de données pour les produits
 class Product(Model):
@@ -69,12 +69,19 @@ def fetch_and_store_products():
     else:
         print("Échec de la récupération des produits.")
 
-# Route pour récupérer les produits stockés en base de données
+
+
+
+# Route pour récupérer et affier les produits
 @app.route('/', methods=['GET'])
 def get_products():
+    """
+    Route pour récupérer les produits stockés en base de données
+    """
     products = list(Product.select().dicts())
     return jsonify({"products": products}), 200
 
+# Route pour l'ajout de commandes avec la class order
 @app.route('/order', methods=['POST'])
 def create_order():
     data = request.get_json()
