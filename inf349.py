@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Connexion à la base de données SQLite
-db = SqliteDatabase('products.db')
+db = SqliteDatabase('shop.db')
 
 # Modèle de la base de données
 class Product(Model):
@@ -52,11 +52,18 @@ def fetch_and_store_products():
     else:
         print("Échec de la récupération des produits.")
 
-# Route pour récupérer les produits stockés en base de données
+
+
+
+
 @app.route('/', methods=['GET'])
 def get_products():
+    """
+    Route pour récupérer les produits stockés en base de données
+    """
     products = list(Product.select().dicts())
     return jsonify({"products": products}), 200
+
 
 if __name__ == '__main__':
     init_db()
