@@ -13,7 +13,7 @@
 
 3. Initialisation de la base de données :
 
-``$env:FLASK_APP = "inf349.py"``
+``$env:FLASK_APP="inf349.py"``
 
 ``flask init-db``
 
