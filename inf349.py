@@ -27,6 +27,7 @@ class Product(Model):
 ### Modèle pour les Commandes ###
 class Order(Model):
     shipping_information = TextField()  
+    credit_card = TextField() 
     email = TextField()  
     total_price = IntegerField() 
     total_price_tax = IntegerField() 
