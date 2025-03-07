@@ -24,7 +24,10 @@ class ApiTest(unittest.TestCase):
     def test_create_order(self, mock_get):
         mock_get.return_value = type("Product", (), {"id": 1, "price": 1000, "in_stock": True, "weight": 400})()
         response = self.app.post('/order', json={
-            "product": {"id": 1, "quantity": 2}
+            "product": {"id": 1, "quantity": 2},
+            "credit_card": "", 
+            "email": "test@example.com",
+            "shipping_information": "rue du test"
         })
         self.assertEqual(response.status_code, 302)
         self.assertIn("Location", json.loads(response.data))

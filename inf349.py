@@ -114,9 +114,14 @@ def create_order():
     total_price = product.price * quantity
     shipping_price = calculer_prix(product.weight, quantity)
 
+    credit_card = data.get('credit_card', '')  # Par défaut, vide si non fourni
+    email = data.get('email', '')
+    shipping_information = data.get('shipping_information', '')
+
     order = Order.create(
-        shipping_information="",
-        email="",
+        shipping_information=shipping_information,
+        credit_card=credit_card,
+        email=email,
         total_price=total_price,
         total_price_tax=total_price,
         shipping_price=shipping_price,
@@ -154,6 +159,7 @@ def get_order(order_id):
             "paid": order.paid,
             "product": product,
             "shipping_information": eval(order.shipping_information) if order.shipping_information else {},
+            "credit_card": {},
             "transaction": {
                 "id": order.transaction_id,
                 "success": order.transaction_success,
