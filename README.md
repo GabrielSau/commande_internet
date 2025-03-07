@@ -16,3 +16,9 @@ flask run
 
 L'application est disponible sur : http://localhost:5000
 
+
+Pour les tests : 
+pip install pytest pytest-flask
+pytest
+
+

@@ -119,7 +119,7 @@ def create_order():
         total_price=total_price,
         total_price_tax=total_price,
         shipping_price=shipping_price,
-        product=product
+        product=product.id
     )
 
     return jsonify({"Location": f"/order/{order.id}"}), 302
@@ -241,10 +241,15 @@ def pay_order(order_id):
         "amount_charged": order.total_price_tax + order.shipping_price
     }
 
+    headers = {
+        "Host": "dimprojetu.uqac.ca",
+        "Content-Type": "application/json"
+    }
+
     print(f"Requête envoyée à {url}")
     print(f"Payload : {payload}")
 
-    response = requests.post(url, json=payload)
+    response = requests.post(url, json=payload, headers=headers)
 
     if response.status_code == 200:
         transaction = response.json()["transaction"]
@@ -269,7 +274,11 @@ def pay_order(order_id):
     try:
         return jsonify(response.json()), 422
     except requests.exceptions.JSONDecodeError:
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         return jsonify({"errors": {"credit_card": {"code": "invalid-response", "name": "Service de paiement distant indisponible"}}}), 422
+    
+
 
 
 
