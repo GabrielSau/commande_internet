@@ -114,6 +114,10 @@ def create_order():
     except ValueError:
         return jsonify({"errors" : {"product": {"code": "error","name": "Les champs doivent être de type numérique"}}}), 422
 
+    if quantity <= 0:
+        return jsonify({"errors": {"product": {"code": "invalid-quantity", "name": "La quantité doit être supérieure à zéro"}}}), 422
+
+    
     try:
         product = Product.get(Product.id == product_id)
     except Product.DoesNotExist:
