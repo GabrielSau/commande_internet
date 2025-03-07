@@ -29,8 +29,10 @@ L'application est disponible sur : http://localhost:5000
 ``deactivate``
 
 
-Pour les tests : 
-pip install pytest pytest-flask
-pytest
+## 6. Pour les tests : 
+
+``pip install pytest pytest-flask``
+
+``pytest``
 
 
