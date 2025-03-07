@@ -1,4 +1,10 @@
 # commande_internet
+Projet réaliser par le groupe : 
+Jonathan GUIL - GUIJ24090400
+Tom JAMMES - JAMT27100400
+Constant Nguyen  - NGUC31080400
+Gabriel SAUVAGNAC - SAUG06120400
+
 
 ## 1. Cloner le projet : 
 

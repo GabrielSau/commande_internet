@@ -119,8 +119,6 @@ class ApiTest(unittest.TestCase):
     
 
 
-
-
     """
     Nous n'avons pas pu tester le PUT avec la credit card car le serveur nous renvoyé un timeout à chaque fois comme ci le serveur n'était pas ouvert.
     Donc nous n'avons pas pu vérifier que cela fonctionne
